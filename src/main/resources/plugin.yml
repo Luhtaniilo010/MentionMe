@@ -1,0 +1,28 @@
+name: MentionMe
+version: '${version}'
+main: me.r3kt.mentionme.MentionMe
+api-version: '1.21'
+author: R3kt
+description: Lightweight and configurable player mentions for Paper servers.
+commands:
+  mentionme:
+    description: MentionMe admin and help command
+    usage: /mentionme [help|reload]
+  mentions:
+    description: Manage your mention preferences
+    usage: /mentions [toggle|sound]
+permissions:
+  mentionme.use:
+    default: true
+  mentionme.everyone:
+    default: op
+  mentionme.here:
+    default: op
+  mentionme.admin:
+    default: op
+  mentionme.reload:
+    default: op
+  mentionme.bypass.cooldown:
+    default: op
+  mentionme.bypass.limit:
+    default: op

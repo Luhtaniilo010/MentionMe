@@ -1,0 +1,83 @@
+# MentionMe v1.0.0
+# Colors support MiniMessage, including HEX: <#55FF7F>Text</#55FF7F>
+# Multi-line messages use YAML lists, for example:
+# help:
+#   - "<#F0C75E>MentionMe Help"
+#   - "<#E8E8E8>/mentions toggle"
+
+# Startup logging is intentionally minimal to keep console output clean.
+startup:
+  enabled: true
+
+mentions:
+  enabled: true
+  symbol: "@"
+  allow-self-mention: true
+  max-per-message: 5
+  cooldown-seconds: 3
+  highlight-format: "<#FFD65A>@%player%</#FFD65A>"
+
+everyone:
+  enabled: true
+  cooldown-seconds: 30
+  highlight-format: "<#55FF7F>@everyone</#55FF7F>"
+
+here:
+  enabled: true
+  radius: 50.0
+  cooldown-seconds: 15
+  highlight-format: "<#55FF7F>@here</#55FF7F>"
+
+notifications:
+  sound:
+    enabled: true
+    name: "BLOCK_NOTE_BLOCK_PLING"
+    volume: 1.0
+    pitch: 1.2
+  actionbar:
+    enabled: true
+    message: "<#FFD65A>⚡ <#E8E8E8>You were mentioned by <#FFD65A>%sender%</#FFD65A>!"
+  title:
+    enabled: false
+    title: "<#FFD65A>MENTION"
+    subtitle: "<#E8E8E8>%sender% mentioned you"
+    fade-in: 5
+    stay: 40
+    fade-out: 10
+
+offline-player:
+  actionbar: "<#FF5555>✖ <#E8E8E8>Player <#FF5555>%player%</#FF5555> is not online!"
+
+messages:
+  prefix: "<#F0C75E>MentionMe <dark_gray>▶</dark_gray>"
+  no-permission:
+    - "%prefix% <#FF5555>You don't have permission."
+  no-permission-everyone:
+    - "%prefix% <#FF5555>You don't have permission to use <#FFD65A>@everyone<#FF5555>."
+  no-permission-here:
+    - "%prefix% <#FF5555>You don't have permission to use <#FFD65A>@here<#FF5555>."
+  reload:
+    - "%prefix% <#55FF7F>Configuration reloaded."
+  mentions-enabled:
+    - "%prefix% <#55FF7F>Mentions enabled."
+  mentions-disabled:
+    - "%prefix% <#FF5555>Mentions disabled."
+  sound-enabled:
+    - "%prefix% <#55FF7F>Mention sounds enabled."
+  sound-disabled:
+    - "%prefix% <#FF5555>Mention sounds disabled."
+  cooldown:
+    - "%prefix% <#FF5555>Please wait <#FFD65A>%seconds%s</#FFD65A> before mentioning again."
+  too-many:
+    - "%prefix% <#FF5555>You can mention a maximum of <#FFD65A>%limit%</#FFD65A> players per message."
+  self-disabled:
+    - "%prefix% <#FF5555>You cannot mention yourself."
+  help:
+    - ""
+    - "<#F0C75E><bold>MentionMe</bold> <dark_gray>▶ <#E8E8E8>Help"
+    - "<#E8E8E8>/mentions toggle <dark_gray>▶ <#BDBDBD>Toggle mention notifications"
+    - "<#E8E8E8>/mentions sound <dark_gray>▶ <#BDBDBD>Toggle mention sounds"
+    - "<#E8E8E8>/mentionme help <dark_gray>▶ <#BDBDBD>Show this help"
+    - ""
+  admin-help:
+    - "<#E8E8E8>/mentionme reload <dark_gray>▶ <#BDBDBD>Reload configuration"
