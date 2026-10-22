@@ -1,0 +1,18 @@
+groups:
+  staff:
+    enabled: true
+    name: "Staff"
+    prefix: "@staff"
+    sender-permission: "mentionme.group.staff"
+    target-permission: "mentionme.group.staff.receive"
+    cooldown-seconds: 20
+    highlight-format: "<#F0C75E>@staff</#F0C75E>"
+
+  admins:
+    enabled: true
+    name: "Admins"
+    prefix: "@admins"
+    sender-permission: "mentionme.group.admins"
+    target-permission: "mentionme.group.admins.receive"
+    cooldown-seconds: 30
+    highlight-format: "<#FF5555>@admins</#FF5555>"

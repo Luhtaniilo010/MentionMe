@@ -1,16 +1,21 @@
 name: MentionMe
-version: '1.0.0'
-main: me.r3kt.mentionme.MentionMe
+version: '1.1.0'
+main: me.r3kt.mentionme.MentionMePlugin
 api-version: '1.21'
 author: R3kt
-description: Lightweight and configurable player mentions for Paper servers.
+description: Lightweight and configurable player and group mentions for Paper servers.
+
 commands:
   mentionme:
     description: MentionMe admin and help command
     usage: /mentionme [help|reload]
   mentions:
     description: Manage your mention preferences
-    usage: /mentions [toggle|sound]
+    usage: /mentions [toggle|sound|actionbar|title|settings]
+  msettings:
+    description: Open mention settings
+    usage: /msettings
+
 permissions:
   mentionme.use:
     default: true
@@ -26,3 +31,6 @@ permissions:
     default: op
   mentionme.bypass.limit:
     default: op
+
+libraries:
+  - org.xerial:sqlite-jdbc:3.46.1.0

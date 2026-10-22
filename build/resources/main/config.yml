@@ -1,11 +1,3 @@
-# MentionMe v1.0.0
-# Colors support MiniMessage, including HEX: <#55FF7F>Text</#55FF7F>
-# Multi-line messages use YAML lists, for example:
-# help:
-#   - "<#F0C75E>MentionMe Help"
-#   - "<#E8E8E8>/mentions toggle"
-
-# Startup logging is intentionally minimal to keep console output clean.
 startup:
   enabled: true
 
@@ -28,6 +20,9 @@ here:
   cooldown-seconds: 15
   highlight-format: "<#55FF7F>@here</#55FF7F>"
 
+groups:
+  enabled: true
+
 notifications:
   sound:
     enabled: true
@@ -45,6 +40,45 @@ notifications:
     stay: 40
     fade-out: 10
 
+settings-menu:
+  title: "<dark_gray>Mention Settings"
+  size: 27
+  filler:
+    material: "GRAY_STAINED_GLASS_PANE"
+    name: " "
+  enabled:
+    lore: "<#55FF7F>Enabled"
+    glow: true
+  disabled:
+    lore: "<#FF5555>Disabled"
+    glow: false
+  action: "<#F0C75E><bold>CLICK</bold> <dark_gray>▶ <#E8E8E8>Toggle"
+  items:
+    mentions:
+      slot: 10
+      material: "NAME_TAG"
+      name: "<#FFD65A><bold>Mentions</bold>"
+      lore:
+        - "<#E8E8E8>Receive mention notifications."
+    sound:
+      slot: 12
+      material: "NOTE_BLOCK"
+      name: "<#55C7FF><bold>Sound</bold>"
+      lore:
+        - "<#E8E8E8>Play a sound when mentioned."
+    actionbar:
+      slot: 14
+      material: "PAPER"
+      name: "<#7FD8A6><bold>Actionbar</bold>"
+      lore:
+        - "<#E8E8E8>Show mention actionbars."
+    title:
+      slot: 16
+      material: "OAK_SIGN"
+      name: "<#C084FC><bold>Title</bold>"
+      lore:
+        - "<#E8E8E8>Show mention titles."
+
 offline-player:
   actionbar: "<#FF5555>✖ <#E8E8E8>Player <#FF5555>%player%</#FF5555> is not online!"
 
@@ -56,8 +90,10 @@ messages:
     - "%prefix% <#FF5555>You don't have permission to use <#FFD65A>@everyone<#FF5555>."
   no-permission-here:
     - "%prefix% <#FF5555>You don't have permission to use <#FFD65A>@here<#FF5555>."
+  no-permission-group:
+    - "%prefix% <#FF5555>You don't have permission to mention <#FFD65A>%group%<#FF5555>."
   reload:
-    - "%prefix% <#55FF7F>Configuration reloaded."
+    - "%prefix% <#55FF7F>Configuration and groups reloaded."
   mentions-enabled:
     - "%prefix% <#55FF7F>Mentions enabled."
   mentions-disabled:
@@ -66,18 +102,33 @@ messages:
     - "%prefix% <#55FF7F>Mention sounds enabled."
   sound-disabled:
     - "%prefix% <#FF5555>Mention sounds disabled."
+  actionbar-enabled:
+    - "%prefix% <#55FF7F>Mention actionbars enabled."
+  actionbar-disabled:
+    - "%prefix% <#FF5555>Mention actionbars disabled."
+  title-enabled:
+    - "%prefix% <#55FF7F>Mention titles enabled."
+  title-disabled:
+    - "%prefix% <#FF5555>Mention titles disabled."
   cooldown:
     - "%prefix% <#FF5555>Please wait <#FFD65A>%seconds%s</#FFD65A> before mentioning again."
   too-many:
     - "%prefix% <#FF5555>You can mention a maximum of <#FFD65A>%limit%</#FFD65A> players per message."
   self-disabled:
     - "%prefix% <#FF5555>You cannot mention yourself."
+  loading:
+    - "%prefix% <#FFD65A>Your mention settings are still loading."
+  save-failed:
+    - "%prefix% <#FF5555>Your mention settings could not be saved."
   help:
     - ""
     - "<#F0C75E><bold>MentionMe</bold> <dark_gray>▶ <#E8E8E8>Help"
     - "<#E8E8E8>/mentions toggle <dark_gray>▶ <#BDBDBD>Toggle mention notifications"
     - "<#E8E8E8>/mentions sound <dark_gray>▶ <#BDBDBD>Toggle mention sounds"
-    - "<#E8E8E8>/mentionme help <dark_gray>▶ <#BDBDBD>Show this help"
+    - "<#E8E8E8>/mentions actionbar <dark_gray>▶ <#BDBDBD>Toggle mention actionbars"
+    - "<#E8E8E8>/mentions title <dark_gray>▶ <#BDBDBD>Toggle mention titles"
+    - "<#E8E8E8>/mentions settings <dark_gray>▶ <#BDBDBD>Open mention settings"
+    - "<#E8E8E8>/msettings <dark_gray>▶ <#BDBDBD>Open mention settings"
     - ""
   admin-help:
     - "<#E8E8E8>/mentionme reload <dark_gray>▶ <#BDBDBD>Reload configuration"
