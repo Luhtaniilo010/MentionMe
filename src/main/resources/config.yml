@@ -1,77 +1,194 @@
+# ███╗   ███╗███████╗███╗   ██╗████████╗██╗ ██████╗ ███╗   ██╗███╗   ███╗███████╗
+# ████╗ ████║██╔════╝████╗  ██║╚══██╔══╝██║██╔═══██╗████╗ ████║████╗ ████║██╔════╝
+# ██╔████╔██║█████╗  ██╔██╗ ██║   ██║   ██║██║   ██║██╔████╔██║██╔████╔██║█████╗
+# ██║╚██╔╝██║██╔══╝  ██║╚██╗██║   ██║   ██║██║   ██║██║╚██╔╝██║██║╚██╔╝██║██╔══╝
+# ██║ ╚═╝ ██║███████╗██║ ╚████║   ██║   ██║╚██████╔╝██║ ╚═╝ ██║██║ ╚═╝ ██║███████╗
+# ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝╚══════╝
+#
+#                              MentionMe
+#                         Developed by NorthSift
+#
+# Version: 1.1.0
+#
+# Documentation:
+# - MiniMessage formatting is supported in message and GUI text.
+# - Reload configuration with /mentionme reload.
+# - Group mentions are configured separately in groups.yml.
+# - Keep YAML indentation consistent. Use spaces, never tabs.
+#
+# ---------------------------------------------------------------------------
+# STARTUP
+# ---------------------------------------------------------------------------
+
 startup:
+  # Shows MentionMe startup information in console.
   enabled: true
+
+# ---------------------------------------------------------------------------
+# PLAYER MENTIONS
+# ---------------------------------------------------------------------------
 
 mentions:
+  # Master switch for normal @player mentions.
   enabled: true
+
+  # Character required before a player name.
+  # Example with "@": @Notch
   symbol: "@"
+
+  # Allows players to mention themselves.
   allow-self-mention: true
+
+  # Maximum unique player mentions allowed in one message.
+  # Players with mentionme.bypass.limit bypass this limit.
   max-per-message: 5
+
+  # Cooldown between normal player mentions.
+  # Players with mentionme.bypass.cooldown bypass this cooldown.
   cooldown-seconds: 3
+
+  # How mentioned player names appear in chat.
+  # Available placeholder:
+  # %player% - mentioned player's name
   highlight-format: "<#FFD65A>@%player%</#FFD65A>"
 
+# ---------------------------------------------------------------------------
+# @EVERYONE
+# ---------------------------------------------------------------------------
+
 everyone:
+  # Enables the @everyone mention.
   enabled: true
+
+  # Cooldown between @everyone uses.
   cooldown-seconds: 30
+
+  # Chat appearance of @everyone.
   highlight-format: "<#55FF7F>@everyone</#55FF7F>"
 
+# ---------------------------------------------------------------------------
+# @HERE
+# ---------------------------------------------------------------------------
+
 here:
+  # Enables the @here mention.
   enabled: true
+
+  # Only players inside this radius are notified.
   radius: 50.0
+
+  # Cooldown between @here uses.
   cooldown-seconds: 15
+
+  # Chat appearance of @here.
   highlight-format: "<#55FF7F>@here</#55FF7F>"
 
+# ---------------------------------------------------------------------------
+# CUSTOM GROUP MENTIONS
+# ---------------------------------------------------------------------------
+
 groups:
+  # Master switch for all custom groups from groups.yml.
+  #
+  # Example groups:
+  # @staff
+  # @admins
+  # @builders
+  #
+  # Group names, permissions, prefixes and cooldowns are configured
+  # inside groups.yml.
   enabled: true
 
+# ---------------------------------------------------------------------------
+# NOTIFICATIONS
+# ---------------------------------------------------------------------------
+
 notifications:
+
   sound:
+    # Plays a sound to the mentioned player.
     enabled: true
+
+    # Bukkit/Paper sound name.
     name: "BLOCK_NOTE_BLOCK_PLING"
+
     volume: 1.0
     pitch: 1.2
+
   actionbar:
+    # Displays an actionbar notification when mentioned.
     enabled: true
+
+    # Available placeholder:
+    # %sender% - player who mentioned the receiver
     message: "<#FFD65A>⚡ <#E8E8E8>You were mentioned by <#FFD65A>%sender%</#FFD65A>!"
+
   title:
+    # Allows title notifications globally.
+    # Players can still toggle titles individually through /msettings.
     enabled: false
+
     title: "<#FFD65A>MENTION"
     subtitle: "<#E8E8E8>%sender% mentioned you"
+
+    # Times are measured in ticks.
+    # 20 ticks = 1 second.
     fade-in: 5
     stay: 40
     fade-out: 10
 
+# ---------------------------------------------------------------------------
+# SETTINGS MENU
+# ---------------------------------------------------------------------------
+
 settings-menu:
+  # Inventory title.
   title: "<dark_gray>Mention Settings"
+
+  # Inventory size.
+  # Must be a valid chest inventory size: 9, 18, 27, 36, 45 or 54.
   size: 27
+
   filler:
     material: "GRAY_STAINED_GLASS_PANE"
     name: " "
+
   enabled:
     lore: "<#55FF7F>Enabled"
+
+    # Adds an enchantment glow when the setting is enabled.
     glow: true
+
   disabled:
     lore: "<#FF5555>Disabled"
     glow: false
+
+  # Displayed underneath each setting.
   action: "<#F0C75E><bold>CLICK</bold> <dark_gray>▶ <#E8E8E8>Toggle"
+
   items:
+
     mentions:
       slot: 10
       material: "NAME_TAG"
       name: "<#FFD65A><bold>Mentions</bold>"
       lore:
         - "<#E8E8E8>Receive mention notifications."
+
     sound:
       slot: 12
       material: "NOTE_BLOCK"
       name: "<#55C7FF><bold>Sound</bold>"
       lore:
         - "<#E8E8E8>Play a sound when mentioned."
+
     actionbar:
       slot: 14
       material: "PAPER"
       name: "<#7FD8A6><bold>Actionbar</bold>"
       lore:
         - "<#E8E8E8>Show mention actionbars."
+
     title:
       slot: 16
       material: "OAK_SIGN"
@@ -79,47 +196,83 @@ settings-menu:
       lore:
         - "<#E8E8E8>Show mention titles."
 
+# ---------------------------------------------------------------------------
+# OFFLINE PLAYER HANDLING
+# ---------------------------------------------------------------------------
+
 offline-player:
+  # Shown when someone attempts to mention a player who is not online.
+  #
+  # Available placeholder:
+  # %player% - entered player name
   actionbar: "<#FF5555>✖ <#E8E8E8>Player <#FF5555>%player%</#FF5555> is not online!"
 
+# ---------------------------------------------------------------------------
+# MESSAGES
+# ---------------------------------------------------------------------------
+
 messages:
+
+  # Reusable prefix.
+  # Use %prefix% inside message entries below.
   prefix: "<#F0C75E>MentionMe <dark_gray>▶</dark_gray>"
+
   no-permission:
     - "%prefix% <#FF5555>You don't have permission."
+
   no-permission-everyone:
     - "%prefix% <#FF5555>You don't have permission to use <#FFD65A>@everyone<#FF5555>."
+
   no-permission-here:
     - "%prefix% <#FF5555>You don't have permission to use <#FFD65A>@here<#FF5555>."
+
   no-permission-group:
     - "%prefix% <#FF5555>You don't have permission to mention <#FFD65A>%group%<#FF5555>."
+
   reload:
     - "%prefix% <#55FF7F>Configuration and groups reloaded."
+
   mentions-enabled:
     - "%prefix% <#55FF7F>Mentions enabled."
+
   mentions-disabled:
     - "%prefix% <#FF5555>Mentions disabled."
+
   sound-enabled:
     - "%prefix% <#55FF7F>Mention sounds enabled."
+
   sound-disabled:
     - "%prefix% <#FF5555>Mention sounds disabled."
+
   actionbar-enabled:
     - "%prefix% <#55FF7F>Mention actionbars enabled."
+
   actionbar-disabled:
     - "%prefix% <#FF5555>Mention actionbars disabled."
+
   title-enabled:
     - "%prefix% <#55FF7F>Mention titles enabled."
+
   title-disabled:
     - "%prefix% <#FF5555>Mention titles disabled."
+
   cooldown:
+    # %seconds% - cooldown time remaining
     - "%prefix% <#FF5555>Please wait <#FFD65A>%seconds%s</#FFD65A> before mentioning again."
+
   too-many:
+    # %limit% - configured maximum mention count
     - "%prefix% <#FF5555>You can mention a maximum of <#FFD65A>%limit%</#FFD65A> players per message."
+
   self-disabled:
     - "%prefix% <#FF5555>You cannot mention yourself."
+
   loading:
     - "%prefix% <#FFD65A>Your mention settings are still loading."
+
   save-failed:
     - "%prefix% <#FF5555>Your mention settings could not be saved."
+
   help:
     - ""
     - "<#F0C75E><bold>MentionMe</bold> <dark_gray>▶ <#E8E8E8>Help"
@@ -130,5 +283,6 @@ messages:
     - "<#E8E8E8>/mentions settings <dark_gray>▶ <#BDBDBD>Open mention settings"
     - "<#E8E8E8>/msettings <dark_gray>▶ <#BDBDBD>Open mention settings"
     - ""
+
   admin-help:
     - "<#E8E8E8>/mentionme reload <dark_gray>▶ <#BDBDBD>Reload configuration"

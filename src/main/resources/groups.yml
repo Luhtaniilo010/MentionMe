@@ -1,18 +1,29 @@
-groups:
-  staff:
-    enabled: true
-    name: "Staff"
-    prefix: "@staff"
-    sender-permission: "mentionme.group.staff"
-    target-permission: "mentionme.group.staff.receive"
-    cooldown-seconds: 20
-    highlight-format: "<#F0C75E>@staff</#F0C75E>"
-
-  admins:
-    enabled: true
-    name: "Admins"
-    prefix: "@admins"
-    sender-permission: "mentionme.group.admins"
-    target-permission: "mentionme.group.admins.receive"
-    cooldown-seconds: 30
-    highlight-format: "<#FF5555>@admins</#FF5555>"
+# ███╗   ███╗███████╗███╗   ██╗████████╗██╗ ██████╗ ███╗   ██╗███╗   ███╗███████╗
+# ████╗ ████║██╔════╝████╗  ██║╚══██╔══╝██║██╔═══██╗████╗ ████║████╗ ████║██╔════╝
+# ██╔████╔██║█████╗  ██╔██╗ ██║   ██║   ██║██║   ██║██╔████╔██║██╔████╔██║█████╗
+# ██║╚██╔╝██║██╔══╝  ██║╚██╗██║   ██║   ██║██║   ██║██║╚██╔╝██║██║╚██╔╝██║██╔══╝
+# ██║ ╚═╝ ██║███████╗██║ ╚████║   ██║   ██║╚██████╔╝██║ ╚═╝ ██║██║ ╚═╝ ██║███████╗
+# ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝╚══════╝
+#
+#                              MentionMe
+#                         Developed by NorthSift
+#
+# Version: 1.1.0
+#
+# ---------------------------------------------------------------------------
+# CUSTOM GROUP MENTIONS
+# ---------------------------------------------------------------------------
+#
+# Add as many custom mention groups as you want under "groups:".
+#
+# Example:
+#
+# groups:
+#   builders:
+#     enabled: true
+#     name: "Builders"
+#     prefix: "@builders"
+#     sender-permission: "mentionme.group.builders"
+#     target-permission: "mentionme.group.builders.receive"
+#     cooldown-seconds: 20
+#     highlight-format: "<#55C7FF>@builders</#55C7FF>"
